@@ -1,18 +1,16 @@
-from . import models
+from .models import Account
 from django.contrib import admin
 # Register your models here.
 
 
 class AccountAdmin(admin.ModelAdmin):
-    model = models.Account
-    list_display = ('username', 'email', 'mobile', 'is_staff', 'is_verified', 'is_active', 'last_login', 'joined_date') 
-    
-    readonly_fields = ('last_login','joined_date','password')
-    ordering = ('joined_date', )
+    model = Account
+    list_display = ('user_name', 'email', 'phone_number', 'dob', 'is_staff', 'is_admin', 'is_active') 
+
     filter_horizontal =()
     list_filter = ()
     fieldsets =()
 
 # Register your models here.
 
-admin.site.register(models.Account,AccountAdmin)
+admin.site.register(Account,AccountAdmin)
