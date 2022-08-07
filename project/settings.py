@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'rest_framework_simplejwt',
-    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -133,15 +132,7 @@ MEDIA_ROOT= BASE_DIR/'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# SWAGGER_SETTINGS = {
-#    'SECURITY_DEFINITIONS': {
-#       'Bearer': {
-#             'type': 'apiKey',
-#             'name': 'Authorization',
-#             'in': 'header'
-#       }
-#    }
-# }
+
 
 REST_FRAMEWORK = {
     
