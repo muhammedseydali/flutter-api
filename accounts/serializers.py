@@ -8,7 +8,7 @@ class UserRegister(serializers.ModelSerializer):
     profile_picture = serializers.ImageField(max_length=None,use_url=True)
     class Meta:
         model = Account
-        fields = ['id','user_name','phone_number','email','dob','profile_picture','password','password2']
+        fields = ['id','full_name','phone_number','email','dob','profile_picture','password','password2']
         extra_kwargs = {
             'password' : {'write_only':True}
         }
@@ -27,7 +27,7 @@ class UserRegister(serializers.ModelSerializer):
             email=self.validated_data['email'],
             phone_number=self.validated_data['phone_number'],
             dob=self.validated_data['dob'],
-            full_name=self.validated_data['user_name'],
+            full_name=self.validated_data['full_name'],
             profile_picture=self.validated_data['profile_picture'],
         )
         if Account.objects.filter(phone_number=self.validated_data['phone_number']).exists():
@@ -47,4 +47,4 @@ class UserDataSerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Account
-        fields=['id','user_name','phone_number','email','dob','profile_picture']
+        fields=['id','full_name','phone_number','email','dob','profile_picture']
