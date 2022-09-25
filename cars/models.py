@@ -4,7 +4,6 @@ from accounts.models import Account
 
 class CarCategory(models.Model):
 
-
     CAR_TYPE =[
 
         ('HATCHBACK', 'Hatchback'),
