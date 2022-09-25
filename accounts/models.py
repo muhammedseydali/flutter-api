@@ -20,7 +20,7 @@ class MyAccountManager(BaseUserManager):
             user.save(using = self._db) 
             return user 
         
-    def create_superuser(self,full_name,phone_number,email,dob,profile_picture,password=None):
+    def create_superuser(self,user_name,phone_number,email,dob,profile_picture,password):
             user = self.create_user(
                 email = self.normalize_email(email),
                 user_name=user_name,
@@ -42,7 +42,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(max_length=100,unique=True)
     dob = models.DateField()
     profile_picture = models.ImageField(upload_to='images/',null=True)
-    
+    password = models.CharField(max_length=255)
     #required
     date_joined = models.DateTimeField(auto_now_add=True)
     is_admin = models.BooleanField(default=False)
