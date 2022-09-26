@@ -27,7 +27,7 @@ class CarCategory(models.Model):
 class Cars(models.Model):
     name = models.CharField(max_length=255, blank=True)
     slug = models.CharField(max_length=255, blank=True)
-    category = models.OneToOneField(CarCategory, on_delete=models.CASCADE, related_name="categories")
+    category = models.OneToOneField('cars.CarCategory', on_delete=models.CASCADE, related_name="categories")
     about = models.TextField()
     media = models.URLField()
     description = models.TextField()
@@ -43,15 +43,15 @@ class Cars(models.Model):
         
         
 class Cart(models.Model):
-    car = models.ForeignKey(Cars, on_delete=models.CASCADE, related_name="cars")
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="accounts")
+    car = models.ForeignKey('cars.Cars', on_delete=models.CASCADE, related_name="cars")
+    user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name="accounts")
     date_added = models.DateTimeField(auto_now_add=True)
 
 
 class CartItem(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
-    car = models.ForeignKey(Cars, on_delete= models.CASCADE)
-    cart = models.ForeignKey(Cart, on_delete= models.CASCADE)
+    user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, null=True)
+    car = models.ForeignKey('cars.Cars', on_delete= models.CASCADE)
+    cart = models.ForeignKey('cars.Cart', on_delete= models.CASCADE)
     quantity = models.IntegerField(null=True)
     is_active = models.BooleanField(default=True)
 
@@ -62,7 +62,7 @@ class CartItem(models.Model):
         return self.product
 
 class Order(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="orders")
+    user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name="orders")
 
 
 
