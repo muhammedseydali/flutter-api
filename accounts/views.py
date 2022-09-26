@@ -1,6 +1,4 @@
 from .models import Account
-
-
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.db import transaction
@@ -47,6 +45,7 @@ class UsersLists(APIView):
         return Response(serializer.data)
 
 
+
 class UserDetails(APIView):
     permission_classes = [IsAdminUser]
     def get(self,request,pk):
@@ -54,7 +53,8 @@ class UserDetails(APIView):
         user = Account.objects.get(pk=id)
         serializer = UserDataSerializer(user)
         return Response(serializer.data)
-    
+        
+
     
     def put(self,request,pk):
         id = pk

@@ -19,11 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import permissions
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
-    path('api',include('rest_framework.urls')),
+    path('',include('cars.urls')),
+    path('',include('rest_framework.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
 
     # re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     # re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

@@ -68,7 +68,7 @@ class Account(AbstractBaseUser):
 
 class ImageType(models.Model):
     auto_id = models.PositiveIntegerField(db_index=True, unique=True)
-    creator = models.ForeignKey('Account', on_delete=models.CASCADE)
+    creator = models.ForeignKey('accounts.Account', on_delete=models.CASCADE)
     type = models.CharField(max_length=255)
     value = models.PositiveIntegerField()
     
@@ -84,11 +84,11 @@ class ImageType(models.Model):
     
 class Image(models.Model):
     auto_id = models.PositiveIntegerField(db_index=True, unique=True)
-    creator = models.ForeignKey('Account', on_delete=models.CASCADE)
+    creator = models.ForeignKey('accounts.Account', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     model_name = models.CharField(max_length=255)
     reference_id = models.UUIDField()
-    image_type = models.ForeignKey("ImageType", related_name='images', on_delete=models.CASCADE)
+    image_type = models.ForeignKey(ImageType, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=get_file_path)
     description = models.TextField(blank=True, null=True)
 
