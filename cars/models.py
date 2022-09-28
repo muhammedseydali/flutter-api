@@ -12,7 +12,6 @@ class CarCategory(models.Model):
         ('SEDAN', 'Sedan'),
         ('SUV', 'Suv')
     ]
-    auto_id = models.CharField(max_length=255, unique=True)
     type = models.CharField(max_length=255, choices=CAR_TYPE, default='SEDAN')
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
     description = models.TextField(max_length=255, blank=True)
@@ -27,8 +26,7 @@ class CarCategory(models.Model):
         return self.type
 
 class Cars(models.Model):
-    
-    auto_id = models.CharField(max_length=255, unique=True)
+
     name = models.CharField(max_length=255, blank=True)
     slug = models.CharField(max_length=255, blank=True)
     category = models.OneToOneField('cars.CarCategory', on_delete=models.CASCADE, related_name="categories")
