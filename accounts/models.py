@@ -1,8 +1,8 @@
-from .functions import get_file_path
-from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
+from .functions import get_file_path, get_auto_id
 # Create your models here.
 
 class MyAccountManager(BaseUserManager):
