@@ -7,7 +7,6 @@ from rest_framework import fields, serializers
 
 
 class CarCategorySerializer(serializers.ModelSerializer):
-    auto_id = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = CarCategory
@@ -19,7 +18,7 @@ class CarSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cars
-        fields = ['id', 'auto_id', ' name', 'slug', 'category', 'about', 'media', 'description']
+        fields = ['id', 'name', 'slug', 'category', 'about', 'media', 'description']
 
 
 
