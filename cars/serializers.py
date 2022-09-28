@@ -5,12 +5,14 @@ from .models import Cars, CarCategory, Cart, CartItem, Order
 from django.db import transaction
 from rest_framework import fields, serializers
 
+from accounts.functions import get_auto_id
+
 
 class CarCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CarCategory
-        fields = ['id', 'type', 'slug', 'description']
+        fields = [ 'id', 'type', 'slug', 'description']
 
 
 
