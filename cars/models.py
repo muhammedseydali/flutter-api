@@ -43,12 +43,13 @@ class Cars(models.Model):
         return self.name
 
         
-        
 class Cart(models.Model):
     car = models.ForeignKey('cars.Cars', on_delete=models.CASCADE, related_name="cars")
     user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name="accounts")
     date_added = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return 'car={0}'.format(self.car)
 
 class CartItem(models.Model):
     user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, null=True)
@@ -63,5 +64,11 @@ class CartItem(models.Model):
     def __unicode__(self):
         return self.product
 
+    def __str__(self):
+        return self.cart
+
 class Order(models.Model):
     user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name="orders")
+
+    def __str__(self):
+        return self.user

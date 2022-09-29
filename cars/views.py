@@ -55,9 +55,21 @@ class CarViewset(ModelViewSet):
             
             return Response(response_data, status=status.HTTP_201_CREATED)        
 
-
-
-
 class CartItemViewset(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        with transaction.atomic():
+            car_item = CartItem.objects.create(
+                                            **serializer.validated_data)
+            car_data = CartItemSerializer(car_item, many=False, context={'request': request})
+            
+            response_data = {
+                "success": "Caritem Successfully Created.", 
+                "cars_item": car_data
+            }
+            
+            return Response(response_data, status=status.HTTP_201_CREATED)  

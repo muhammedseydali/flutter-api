@@ -77,7 +77,7 @@ class OrderProduct(models.Model):
     Payment = models.ForeignKey(Payment,on_delete=models.SET_NULL, blank=True, null=True)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    product_price = models.FloatField()
+    product_price = models.DecimalField(max_digits=10, decimal_places=2)
     ordered = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
