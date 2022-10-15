@@ -77,8 +77,8 @@ class Order(models.Model):
 
     class Meta:
         db_table = 'cars_order'
-        verbose_name = ('cars')
-        verbose_name_plural = ('cars')
+        verbose_name = ('order')
+        verbose_name_plural = ('order')
 
     def __str__(self):
         return self.user
