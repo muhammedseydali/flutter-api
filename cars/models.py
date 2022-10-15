@@ -58,6 +58,11 @@ class CartItem(models.Model):
     quantity = models.IntegerField(null=True)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        db_table = 'cars_cartitem'
+        verbose_name = ('cars')
+        verbose_name_plural = ('cars')
+
     def sub_total(self):
         return self.car.price * self.quantity
 
@@ -69,6 +74,11 @@ class CartItem(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name="orders")
+
+    class Meta:
+        db_table = 'cars_order'
+        verbose_name = ('cars')
+        verbose_name_plural = ('cars')
 
     def __str__(self):
         return self.user

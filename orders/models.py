@@ -21,7 +21,7 @@ class Payment(models.Model):
         return self.payment_id
 
     class Meta:
-        db_table = 'payment'
+        db_table = 'order_payment'
         verbose_name = ('payment')
         verbose_name_plural = ('payment')        
 
@@ -66,7 +66,7 @@ class Order(models.Model):
         return self.user.first_name
 
     class Meta:
-        db_table = 'order'
+        db_table = 'order_order'
         verbose_name = ('order')
         verbose_name_plural = ('order')
    
