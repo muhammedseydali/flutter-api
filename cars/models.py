@@ -35,7 +35,7 @@ class Cars(models.Model):
     description = models.TextField()
 
     class Meta:
-        db_table = 'cars'
+        db_table = 'cars_cars'
         verbose_name = ('cars')
         verbose_name_plural = ('cars')
 

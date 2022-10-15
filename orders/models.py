@@ -45,7 +45,6 @@ class Order(models.Model):
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    order_note = models.CharField(max_length=50, blank=True)
     order_total =models.FloatField()
     tax= models.FloatField()
     status = models.CharField(max_length=50, choices=STATUS, default='New')
@@ -83,9 +82,9 @@ class OrderProduct(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'orderproduct'
-        verbose_name = ('orderproduct')
-        verbose_name_plural = ('orderproduct')
+        db_table = 'orders_product'
+        verbose_name = ('order_product')
+        verbose_name_plural = ('order_product')
 
     def __str__(self):
         return self.product.product_name 
